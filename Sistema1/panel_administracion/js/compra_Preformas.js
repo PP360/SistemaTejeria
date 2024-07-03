@@ -1,0 +1,35 @@
+$(document).ready(inicio)
+function inicio(){
+    $(".botoncompraPreformas").click(anade)
+    $("#carritoPreformas").load("../comprar/listaCompraPreformas.php");
+
+
+
+}
+function anade(){
+    var idnumero = $("#gramaje").val();
+    var cantidad = $("#cantidad").val();
+    var codigo=$("#codigo").val();
+    var proveedor=$("#proveedor").val();
+    if (idnumero=="0" || cantidad=="" || codigo==0 || proveedor=="0")
+    {
+        $('#mensaje').addClass('error').html('<i class="fa fa-check" aria-hidden="true"></i> Complete todos los campos').show(150).delay(1500).hide(150);
+    }
+    else
+    {
+        $("#carritoPreformas").load("../comprar/listaCompraPreformas.php?p="+idnumero+"&cant="+cantidad+"&cod="+codigo+"&pro="+proveedor);
+            $('#mensaje').addClass('error').html('<i class="fa fa-check" aria-hidden="true"></i> Se agrego al carrito correctamente').show(150).delay(1500).hide(150);
+            $("#cantidad").val('');
+            $('#gramaje').prop('selectedIndex',0);
+            $('#btncomprar').attr("disabled", false);  
+     
+
+
+
+    }
+
+}
+
+
+
+
